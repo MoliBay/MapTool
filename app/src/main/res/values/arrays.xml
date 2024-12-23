@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arr_activation_point_type">
+        <item>0-normal poi</item>
+        <item>1-charge pile</item>
+    </string-array>
+</resources>

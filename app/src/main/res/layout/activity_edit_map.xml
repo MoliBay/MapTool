@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/map_layer_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/black"
+        android:paddingStart="30dp"
+        app:title="@string/action_settings"
+        app:navigationIcon="@mipmap/back"
+        app:popupTheme="@style/Widget.AppCompat.PopupMenu"/>
+
+    <FrameLayout
+        android:id="@+id/mapview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp" />
+
+    <LinearLayout
+        android:id="@+id/edit_map_tool_layout"
+        android:layout_width="316.67dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="53.33dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/edit_map_tool_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="43.33dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/edit_map_tool_move"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginStart="3.33dp"
+                android:background="@drawable/tool_background"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/edit_map_tool_move"
+                android:textSize="13.67sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:drawablePadding="6.83dp"
+                android:drawableStart="@mipmap/tool_move"/>
+            <TextView
+                android:id="@+id/edit_map_tool_brush"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:text="@string/edit_map_tool_brush"
+                android:textSize="13.67sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:drawablePadding="6.83dp"
+                android:drawableStart="@mipmap/tool_brush"/>
+            <TextView
+                android:id="@+id/edit_map_tool_eraser"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:text="@string/edit_map_tool_eraser"
+                android:textSize="13.67sp"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:drawablePadding="6.83dp"
+                android:drawableStart="@mipmap/eraser"/>
+            <FrameLayout
+                android:id="@+id/edit_map_undo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+                <ImageView
+                    android:id="@+id/edit_map_undo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/undo_selector"/>
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/edit_map_redo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+                <ImageView
+                    android:id="@+id/edit_map_redo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/redo_selector"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/edit_map_tool_brush_layout"
+            android:layout_width="match_parent"
+            android:layout_height="33.33dp"
+            android:layout_marginTop="3.33dp"
+            android:background="@color/edit_map_tool_bg"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <RadioButton
+                android:id="@+id/edit_map_brush_white"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="14.33dp"
+                android:checked="true"
+                android:button="@null"
+                android:background="@drawable/pen_white_selector"/>
+            <RadioButton
+                android:id="@+id/edit_map_brush_black"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16.33dp"
+                android:button="@null"
+                android:background="@drawable/pen_black_selector"/>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/edit_map_tool_eraser_layout"
+            android:layout_width="match_parent"
+            android:layout_height="33.33dp"
+            android:layout_marginTop="3.33dp"
+            android:background="@color/edit_map_tool_bg"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <RadioButton
+                android:id="@+id/edit_map_eraser_small"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="18.67dp"
+                android:layout_gravity="center_vertical"
+                android:button="@null"
+                android:checked="true"
+                android:background="@drawable/eraser_small_selector"/>
+            <RadioButton
+                android:id="@+id/edit_map_eraser_middle"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginStart="21dp"
+                android:layout_gravity="center_vertical"
+                android:button="@null"
+                android:background="@drawable/eraser_middle_selector"/>
+            <RadioButton
+                android:id="@+id/edit_map_eraser_large"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="21dp"
+                android:layout_gravity="center_vertical"
+                android:button="@null"
+                android:background="@drawable/eraser_large_selector"/>
+            <RadioButton
+                android:id="@+id/edit_map_eraser_exlarge"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="21dp"
+                android:layout_gravity="center_vertical"
+                android:button="@null"
+                android:background="@drawable/eraser_exlarge_selector"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fence_map_tool_layout"
+        android:layout_width="299.33dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="53.33dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/fence_map_tool_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="43.33dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fence_map_tool_move"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginStart="3.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:drawableStart="@mipmap/tool_move"
+                android:drawablePadding="6.83dp"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:text="@string/edit_map_tool_move"
+                android:textColor="@color/black"
+                android:textSize="13.67sp" />
+
+            <TextView
+                android:id="@+id/fence_map_tool_operation"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:drawableStart="@mipmap/tool_wall"
+                android:drawablePadding="6.83dp"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:singleLine="true"
+                android:text="@string/fence_map_tool_brush"
+                android:textColor="@color/black"
+                android:textSize="13.67sp" />
+
+            <FrameLayout
+                android:id="@+id/fence_map_undo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:id="@+id/fence_map_undo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/undo_selector" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fence_map_redo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:id="@+id/fence_map_redo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/redo_selector" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fence_map_delete"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/new_fence_group" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/fence_map_tool_colors_layout"
+            android:layout_width="match_parent"
+            android:layout_height="33.33dp"
+            android:layout_marginTop="3.33dp"
+            android:background="@color/edit_map_tool_bg"
+            android:visibility="visible"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fence_map_color_red"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:button="@null"
+                android:checked="true"
+                android:background="@drawable/fence_red_selector" />
+
+            <RadioButton
+                android:id="@+id/fence_map_color_orange"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_orange_selector" />
+
+            <RadioButton
+                android:id="@+id/fence_map_color_green"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_green_selector"/>
+
+            <RadioButton
+                android:id="@+id/fence_map_color_blue"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_blue_selector" />
+
+            <RadioButton
+                android:id="@+id/fence_map_color_purple"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_purple_selector"/>
+
+            <RadioButton
+                android:id="@+id/fence_map_color_grey"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_grey_selector"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mark_map_tool_layout"
+        android:layout_width="299.33dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="53.33dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/mark_map_tool_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="43.33dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mark_map_tool_move"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginStart="3.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:drawableStart="@mipmap/tool_move"
+                android:drawablePadding="6.83dp"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:text="@string/edit_map_tool_move"
+                android:textColor="@color/black"
+                android:textSize="13.67sp" />
+
+            <TextView
+                android:id="@+id/mark_map_tool_operation"
+                android:layout_width="70dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/tool_background"
+                android:drawableStart="@mipmap/tool_mark"
+                android:drawablePadding="6.83dp"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:paddingStart="13dp"
+                android:singleLine="true"
+                android:text="@string/mark_map_tool_brush"
+                android:textColor="@color/black"
+                android:textSize="13.67sp" />
+
+            <FrameLayout
+                android:id="@+id/mark_map_undo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:id="@+id/mark_map_undo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/undo_selector" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/mark_map_redo"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:id="@+id/mark_map_redo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/redo_selector" />
+            </FrameLayout>
+
+            <!--<FrameLayout
+                android:id="@+id/mark_map_delete"
+                android:layout_width="51dp"
+                android:layout_height="33.33dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/quick_tool_selector">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/remove" />
+            </FrameLayout>-->
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/mark_map_tool_colors_layout"
+            android:layout_width="match_parent"
+            android:layout_height="33.33dp"
+            android:layout_marginTop="3.33dp"
+            android:background="@color/edit_map_tool_bg"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <RadioButton
+                android:id="@+id/mark_map_color_red"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:button="@null"
+                android:checked="true"
+                android:background="@drawable/fence_red_selector"/>
+
+            <RadioButton
+                android:id="@+id/mark_map_color_orange"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_orange_selector"/>
+
+            <RadioButton
+                android:id="@+id/mark_map_color_green"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_green_selector"/>
+
+            <RadioButton
+                android:id="@+id/mark_map_color_blue"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_blue_selector"/>
+
+            <RadioButton
+                android:id="@+id/mark_map_color_purple"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_purple_selector"/>
+
+            <RadioButton
+                android:id="@+id/mark_map_color_grey"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:button="@null"
+                android:background="@drawable/fence_grey_selector"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="143.33dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical|end"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/mark_layer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="3.3dp"
+            android:layout_marginStart="3.3dp"
+            android:layout_marginEnd="3.3dp"
+            android:background="@drawable/layer_background">
+
+            <TextView
+                android:id="@+id/mark_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="19.33dp"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:text="@string/edit_map_mark"
+                android:textColor="@color/black"
+                android:textSize="13.33dp" />
+
+            <ImageView
+                android:id="@+id/mark_layer_restore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="28.33dp"
+                android:src="@mipmap/tool_mark" />
+            <ImageView
+                android:id="@+id/mark_layer_visible"
+                android:layout_toLeftOf="@id/mark_layer_restore"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="69.33dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:src="@mipmap/show"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fence_layer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="3.3dp"
+            android:layout_marginStart="3.3dp"
+            android:layout_marginEnd="3.3dp"
+            android:background="@drawable/layer_background">
+            <TextView
+                android:id="@+id/fence_btn"
+                android:layout_marginStart="19dp"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_map_fence"
+                android:layout_centerVertical="true"
+                android:textSize="13.33dp"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/fence_layer_restore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28.33dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/tool_wall"/>
+            <ImageView
+                android:id="@+id/fence_layer_visible"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="69.33dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:src="@mipmap/show"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_layer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="3.3dp"
+            android:layout_marginStart="3.3dp"
+            android:layout_marginEnd="3.3dp"
+            android:background="@drawable/layer_background">
+
+            <TextView
+                android:id="@+id/edit_btn"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_map_edit"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="19dp"
+                android:textSize="13.33dp"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/edit_layer_restore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28.33dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/tool_brush"/>
+            <ImageView
+                android:id="@+id/edit_layer_visible"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="69.33dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:src="@mipmap/show"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

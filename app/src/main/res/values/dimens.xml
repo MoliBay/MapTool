@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="androids_api27_config_minScalingSpan">27mm</dimen>
+    <dimen name="norm_text_size_zero">8sp</dimen>
+    <dimen name="norm_text_size_one">10.67sp</dimen>
+    <dimen name="norm_text_size_two">12sp</dimen>
+    <dimen name="norm_text_size_three">13.33sp</dimen>
+    <dimen name="norm_text_size_four">15.33sp</dimen>
+    <dimen name="norm_text_size_five">18sp</dimen>
+    <dimen name="norm_text_size_six">20sp</dimen>
+    <dimen name="norm_text_size_seven">24sp</dimen>
+
+    <dimen name="tool_bar_title_padding">23dp</dimen>
+</resources>

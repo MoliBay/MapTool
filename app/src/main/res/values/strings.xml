@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">MapTool</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title">EditMap</string>
+
+    <string name="exit">Exit</string>
+    <string name="upload">Upload</string>
+    <string name="delete">Delete</string>
+    <string name="add_map">Add map</string>
+    <string name="finish">Finish</string>
+    <string name="Save">Save</string>
+    <string name="home">Home</string>
+    <string name="edit_toolbar_name">Edit Map</string>
+    <string name="edit_toolbar_switch">Switch map</string>
+    <string name="edit_toolbar_address">Edit Address</string>
+    <string name="edit_map_mark">Mark</string>
+    <string name="edit_map_fence">Fence</string>
+    <string name="edit_map_edit">Edit</string>
+    <string name="edit_map_tool_move">Move</string>
+    <string name="edit_map_tool_brush">Brush</string>
+    <string name="edit_map_tool_eraser">Eraser</string>
+    <string name="fence_map_tool_brush">Fence</string>
+    <string name="mark_map_tool_brush">Mark</string>
+    <string name="edit_map_add_mark">Mark Point</string>
+
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_save">Save</string>
+    <string name="dialog_update">Update</string>
+    <string name="dialog_update_map">Update map</string>
+    <string name="dialog_delete_map">Delete map</string>
+    <string name="dialog_uploading_progress">Uploading map</string>
+    <string name="dialog_pushing_progress">Pushing map to CCU</string>
+    <string name="dialog_save_and_upload">Save and upload</string>
+    <string name="dialog_update_and_upload">Save and update</string>
+    <string name="dialog_update_map_title">Update map %1$s ?</string>
+    <string name="dialog_update_map_name_title">Edit name</string>
+    <string name="dialog_update_map_address_title">Edit address</string>
+    <string name="input_point_name">Point name</string>
+    <string name="point_type_hint">Point type</string>
+    <string name="add_mark_title">Mark Point</string>
+    <string name="input_map_name">Input map name</string>
+    <string name="edit_mark_title">Edit mark</string>
+    <string name="edit_map_save">Save map</string>
+    <string name="edit_map_save_name">Input map name</string>
+    <string name="edit_map_save_floor">Input floor</string>
+    <string name="edit_map_save_province">Input province</string>
+    <string name="edit_map_save_city">Input city</string>
+    <string name="edit_map_save_address">Input address</string>
+    <string name="delete_fence_title">Whether to delete this paragraph fence?</string>
+    <string name="interest_point_cannot_empty">Interest point cannot be empty</string>
+    <string name="map_name_cannot_empty">Map name cannot be empty</string>
+    <string name="map_address_cannot_empty">Map address cannot be empty</string>
+    <string name="map_floor_cannot_empty">Map floor cannot be empty</string>
+    <string name="map_floor_cannot_be_zero">Map floor cannot be zero</string>
+    <string name="map_address_must_contain_excharge">Map must contain one charging point</string>
+    <string name="map_upload_time_out">Uploading map timed out, please check the network</string>
+
+    <string name="loading_progress_prompt">Loading&#8230;</string>
+    <string name="loading_error_prompt">Error, please try again!</string>
+    <string name="loading_empty_prompt">Empty, please try later!</string>
+    <string name="login_wait_prompt">Login going on,please wait&#8230;</string>
+    <string name="progress_wait_prompt">Progress going on，please wait&#8230;</string>
+    <string name="invalid_map_dir_prompt">invalid upload map </string>
+    <string name="start_build_map_title">build map </string>
+    <string name="robot_charging_query_message">robot in charging,continue starting map?</string>
+    <string name="exit_login_text">Exit APP</string>
+    <string name="download_map_text">downloading map is ongoing, please wait</string>
+    <string name="download_map_failed">downloading map failed</string>
+    <string name="map_default_city">beijing</string>
+    <string name="login_failed_text">login failed</string>
+    <string name="latest_version_text">latest version</string>
+    <string name="bottom_bar_switch">Active</string>
+    <string name="delete_mark_title">Delete Mark</string>
+    <string name="toolbar_switch_edit">Edit Mode</string>
+    <string name="input_patrol_time_error">Please input time</string>
+    <string name="enter_edit_map">Enter Editing Map</string>
+    <string name="add_mark_point_toast">Touch on  the map, and Add a point</string>
+    <string name="point_x_y_angle">point:(x, y, angle)</string>
+    <string name="point_x">x</string>
+    <string name="point_y">y</string>
+    <string name="point_angle">angle</string>
+    <string name="permission_granted">Permissions Granted</string>
+    <string name="permission_denied">Permissions Denied</string>
+
+</resources>

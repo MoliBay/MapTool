@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="335dp"
+        android:layout_height="107dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/simple_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30.33dp"
+            android:textColor="@color/black"
+            android:textSize="13.33sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="33dp"
+            android:layout_marginBottom="9dp"
+            android:orientation="horizontal">
+            <View
+                android:id="@+id/button_divider"
+                android:layout_width="1.5dp"
+                android:layout_height="15dp"
+                android:layout_centerInParent="true"
+                android:background="@color/divider_color"/>
+            <TextView
+                android:id="@+id/simple_dialog_cancel"
+                android:layout_width="56.8dp"
+                android:layout_height="20.4dp"
+                android:gravity="center"
+                android:layout_toLeftOf="@id/button_divider"
+                android:layout_marginEnd="58.33dp"
+                android:textSize="13.33dp"
+                android:text="@string/dialog_cancel"
+                android:textColor="@color/login_btn_color"/>
+
+            <TextView
+                android:id="@+id/simple_dialog_confirm"
+                android:layout_width="56.8dp"
+                android:layout_height="20.4dp"
+                android:gravity="center"
+                android:layout_toRightOf="@id/button_divider"
+                android:layout_marginStart="58.33dp"
+                android:textSize="13.33dp"
+                android:text="@string/dialog_confirm"
+                android:textColor="@color/login_btn_color"/>
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

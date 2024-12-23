@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="231dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialog_ex_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25.6dp"
+                android:text="@string/edit_map_save"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24.8dp"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/dialog_map_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edittext_bg_selector"
+                    android:hint="@string/edit_map_save_name"
+                    android:padding="7.88dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/edit_text_hint_color"
+                    android:textSize="13.67dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="27.6dp"
+                android:layout_marginBottom="27.6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dialog_ex_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="9.2dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/dialog_cancel"
+                    android:textColor="@color/login_btn_color"
+                    android:textSize="14.4sp" />
+
+                <TextView
+                    android:id="@+id/dialog_ex_action"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/dialog_save"
+                    android:textColor="@color/login_btn_color"
+                    android:textSize="14.4sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>
